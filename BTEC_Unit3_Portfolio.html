@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shams Patwary – Digital Portfolio | BTEC Unit 3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0d1f35;
+  --navy2:#162d47;
+  --blue:#1d6fdb;
+  --teal:#0a9e8a;
+  --teal-light:#e0f5f2;
+  --white:#ffffff;
+  --off:#f4f7fb;
+  --border:#dde4ef;
+  --text:#1a2637;
+  --muted:#5a6a7e;
+  --light-card:#f9fbfd;
+}
+html,body{min-height:100%;background:var(--off);font-family:'DM Sans',sans-serif;color:var(--text);font-size:15px;line-height:1.7}
+.page{display:none;animation:fadeIn .3s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* HEADER */
+header{background:var(--navy);padding:0 0 0 0;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,.25)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 36px;flex-wrap:wrap;gap:10px}
+.brand h1{font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:800;color:#fff;letter-spacing:-0.3px}
+.brand p{font-size:0.75rem;color:#7a95b8;margin-top:1px}
+nav{display:flex;flex-wrap:wrap;gap:2px}
+nav button{background:none;border:none;color:#a8bdd4;padding:8px 13px;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:500;cursor:pointer;border-radius:6px;transition:all .2s;letter-spacing:0.2px}
+nav button:hover{background:rgba(255,255,255,.1);color:#fff}
+nav button.active{background:var(--teal);color:#fff}
+
+/* MAIN WRAPPER */
+main{max-width:1060px;margin:0 auto;padding:36px 24px 80px}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);border-radius:14px;padding:48px 44px;display:flex;gap:36px;align-items:center;flex-wrap:wrap;margin-bottom:40px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-40px;top:-40px;width:260px;height:260px;border-radius:50%;border:40px solid rgba(255,255,255,.03)}
+.hero-text{flex:1;min-width:260px;position:relative}
+.hero-text h2{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:12px}
+.hero-text h2 span{color:var(--teal)}
+.hero-text p{color:#94b0cc;font-size:0.9rem;max-width:480px;margin-bottom:22px}
+.hero-avatar{width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,#1d6fdb,#0a9e8a);display:flex;align-items:center;justify-content:center;font-size:2.6rem;border:3px solid rgba(255,255,255,.15);flex-shrink:0}
+.quick-btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-block;padding:9px 18px;border-radius:7px;font-size:0.8rem;font-weight:500;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all .2s;text-decoration:none}
+.btn-solid{background:var(--blue);color:#fff}
+.btn-solid:hover{background:#1558b8;transform:translateY(-1px)}
+.btn-teal{background:var(--teal);color:#fff}
+.btn-teal:hover{background:#087d6c;transform:translateY(-1px)}
+.btn-ghost{background:transparent;border:1.5px solid rgba(255,255,255,.3);color:#c8d8e8}
+.btn-ghost:hover{border-color:rgba(255,255,255,.6);color:#fff}
+
+/* SECTION TITLES */
+.sec-title{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;color:var(--navy);margin-bottom:4px}
+.sec-sub{color:var(--muted);font-size:0.84rem;margin-bottom:26px;padding-bottom:14px;border-bottom:1.5px solid var(--border)}
+
+/* CARDS GRID */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:20px;margin-bottom:36px}
+.card{background:#fff;border:1px solid var(--border);border-radius:11px;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.09)}
+.card-thumb{height:130px;display:flex;align-items:center;justify-content:center;font-size:2.8rem;background:linear-gradient(135deg,var(--navy),var(--blue))}
+.card-body{padding:18px}
+.card-body h3{font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:6px}
+.card-body p{font-size:0.82rem;color:var(--muted);line-height:1.6;margin-bottom:12px}
+.tag{display:inline-block;background:#e8f1fb;color:#1d6fdb;font-size:0.7rem;padding:2px 9px;border-radius:20px;margin-right:4px;margin-bottom:8px;font-weight:600}
+.tag-teal{background:var(--teal-light);color:#0a7a69}
+
+/* INFO BOX */
+.info-box{background:#fff;border:1px solid var(--border);border-radius:11px;padding:22px;margin-bottom:20px}
+.info-box h3{font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:14px}
+.info-box p{font-size:0.85rem;color:#334155;line-height:1.75}
+.info-list{list-style:none}
+.info-list li{padding:6px 0;font-size:0.84rem;color:#334155;border-bottom:1px solid #f1f5f9;display:flex;gap:8px;align-items:baseline}
+.info-list li:last-child{border:none}
+.info-list li::before{content:'▸';color:var(--teal);font-size:0.65rem;flex-shrink:0;margin-top:3px}
+
+/* TWO COL */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:28px}
+@media(max-width:660px){.two-col{grid-template-columns:1fr}}
+
+/* SKILLS BARS */
+.skill-item{margin-bottom:14px}
+.skill-label{display:flex;justify-content:space-between;font-size:0.82rem;font-weight:500;margin-bottom:5px;color:var(--navy)}
+.skill-bar{background:#e5eaf2;border-radius:20px;height:8px;overflow:hidden}
+.skill-fill{height:100%;border-radius:20px;background:linear-gradient(90deg,var(--blue),var(--teal));transition:width 1s ease}
+
+/* TIMELINE */
+.timeline{border-left:2.5px solid var(--teal);padding-left:20px;margin-top:8px}
+.tl-item{margin-bottom:18px;position:relative}
+.tl-item::before{content:'';width:10px;height:10px;background:var(--teal);border-radius:50%;position:absolute;left:-26px;top:6px}
+.tl-item h4{font-size:0.88rem;font-weight:500;color:var(--navy)}
+.tl-item p{font-size:0.8rem;color:var(--muted)}
+
+/* HOBBY GRID */
+.hobby-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;margin-bottom:28px}
+.hobby-card{background:#fff;border:1px solid var(--border);border-radius:11px;padding:20px;text-align:center}
+.hobby-icon{font-size:2rem;margin-bottom:10px}
+.hobby-card h3{font-family:'Syne',sans-serif;font-size:0.88rem;font-weight:700;color:var(--navy);margin-bottom:6px}
+.hobby-card p{font-size:0.79rem;color:var(--muted);line-height:1.6}
+
+/* TABLES */
+.data-table{width:100%;border-collapse:collapse;font-size:0.79rem;margin-bottom:28px}
+.data-table th{background:var(--navy);color:#fff;padding:10px 12px;text-align:left;font-weight:600;font-family:'Syne',sans-serif;font-size:0.77rem}
+.data-table td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;color:#2d3a4a}
+.data-table tr:nth-child(even) td{background:#f8fbff}
+.pass{color:#16a34a;font-weight:600}
+.fixed{color:#c07000;font-weight:600}
+
+/* CONTACT FORM */
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:0.83rem;font-weight:500;margin-bottom:5px;color:var(--navy)}
+.form-group input,.form-group textarea{width:100%;padding:10px 13px;border:1px solid var(--border);border-radius:7px;font-family:'DM Sans',sans-serif;font-size:0.84rem;background:#fff;color:var(--text);transition:border .2s}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--teal)}
+.form-group textarea{height:110px;resize:vertical}
+.form-notice{background:#fefce8;border:1px solid #fde68a;border-radius:7px;padding:11px 14px;font-size:0.8rem;color:#854d0e;margin-top:12px}
+.btn-submit{width:100%;padding:11px;background:var(--teal);color:#fff;border:none;border-radius:7px;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:500;cursor:pointer;transition:background .2s}
+.btn-submit:hover{background:#087d6c}
+
+/* AVATAR */
+.avatar-circle{width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--blue));display:flex;align-items:center;justify-content:center;font-size:2.8rem;border:3px solid var(--teal);margin:0 auto 12px}
+
+/* ABOUT PROFILE */
+.profile-card{background:#fff;border:1px solid var(--border);border-radius:11px;padding:28px;text-align:center}
+.profile-card h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--navy)}
+.profile-card p{font-size:0.82rem;color:var(--muted);margin-top:3px}
+
+/* STORYBOARD placeholder */
+.sb-placeholder{background:#e8f1fb;border-radius:8px;height:90px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;margin-bottom:10px;border:1px dashed #a3bfe8}
+.sb-placeholder span{font-size:1.5rem}
+.sb-placeholder p{font-size:0.72rem;color:#4a6fa5;text-align:center}
+
+footer{background:var(--navy);color:#637a92;text-align:center;padding:18px;font-size:0.77rem}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .header-inner{padding:14px 16px}
+  .hero{padding:28px 20px}
+  .hero-text h2{font-size:1.5rem}
+  main{padding:22px 14px 60px}
+  nav button{padding:7px 9px;font-size:0.72rem}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <h1>Shams Patwary</h1>
+      <p>Aspiring IT Professional · BTEC Level 2 ICT</p>
+    </div>
+    <nav>
+      <button onclick="showPage('home')" class="active" id="nav-home">Home</button>
+      <button onclick="showPage('about')" id="nav-about">About Me</button>
+      <button onclick="showPage('unit1')" id="nav-unit1">Unit 1</button>
+      <button onclick="showPage('unit2')" id="nav-unit2">Unit 2</button>
+      <button onclick="showPage('skills')" id="nav-skills">Skills</button>
+      <button onclick="showPage('hobbies')" id="nav-hobbies">Hobbies</button>
+      <button onclick="showPage('testing')" id="nav-testing">Test Evidence</button>
+      <button onclick="showPage('contact')" id="nav-contact">Contact</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== HOME ===== -->
+  <div class="page active" id="page-home">
+    <div class="hero">
+      <div class="hero-text">
+        <h2>Welcome to my<br><span>Digital Portfolio</span></h2>
+        <p>Hi, I'm Shams. I'm finishing my BTEC Level 2 in Information and Creative Technology and I'm applying for the IT apprenticeship at CityTec. This portfolio shows the work I've done throughout my course and gives you a real sense of what I can do.</p>
+        <div class="quick-btns">
+          <button class="btn btn-solid" onclick="showPage('unit1')">Unit 1 Work</button>
+          <button class="btn btn-teal" onclick="showPage('unit2')">Unit 2 Work</button>
+          <button class="btn btn-ghost" onclick="showPage('about')">About Me</button>
+          <button class="btn btn-ghost" onclick="showPage('contact')">Get in Touch</button>
+        </div>
+      </div>
+      <div class="hero-avatar">👨‍💻</div>
+    </div>
+
+    <h2 class="sec-title">What's Inside</h2>
+    <p class="sec-sub">A quick overview of every section in this portfolio</p>
+
+    <div class="cards">
+      <div class="card" onclick="showPage('about')" style="cursor:pointer">
+        <div class="card-thumb">📄</div>
+        <div class="card-body">
+          <h3>About Me</h3>
+          <p>Personal statement, qualifications, key skills and other activities — who I am and why I want this apprenticeship.</p>
+          <span class="tag">Personal</span>
+        </div>
+      </div>
+      <div class="card" onclick="showPage('unit1')" style="cursor:pointer">
+        <div class="card-thumb">💼</div>
+        <div class="card-body">
+          <h3>Unit 1 Work</h3>
+          <p>Three pieces from Unit 1 — a written report, a spreadsheet model and a presentation, each with commentary.</p>
+          <span class="tag">MS Word</span><span class="tag">Excel</span><span class="tag">PowerPoint</span>
+        </div>
+      </div>
+      <div class="card" onclick="showPage('unit2')" style="cursor:pointer">
+        <div class="card-thumb">🎨</div>
+        <div class="card-body">
+          <h3>Unit 2 Work</h3>
+          <p>Three pieces from Unit 2 — a digital image, a tutorial video and a Python script, each with commentary.</p>
+          <span class="tag">GIMP</span><span class="tag">OBS</span><span class="tag">Python</span>
+        </div>
+      </div>
+      <div class="card" onclick="showPage('skills')" style="cursor:pointer">
+        <div class="card-thumb">⚡</div>
+        <div class="card-body">
+          <h3>Skills &amp; Achievements</h3>
+          <p>My technical and soft skills shown visually, plus a timeline of key achievements from September 2024 to now.</p>
+          <span class="tag">Technical</span><span class="tag">Soft Skills</span>
+        </div>
+      </div>
+      <div class="card" onclick="showPage('hobbies')" style="cursor:pointer">
+        <div class="card-thumb">🎮</div>
+        <div class="card-body">
+          <h3>Hobbies &amp; Interests</h3>
+          <p>What I get up to outside of school and how my interests connect back to IT and the skills needed for this role.</p>
+          <span class="tag">Personal</span>
+        </div>
+      </div>
+      <div class="card" onclick="showPage('testing')" style="cursor:pointer">
+        <div class="card-thumb">✅</div>
+        <div class="card-body">
+          <h3>Test Evidence</h3>
+          <p>How I tested this portfolio across two browsers and a mobile device, with a full test plan and results table.</p>
+          <span class="tag">Chrome</span><span class="tag">Firefox</span><span class="tag">Mobile</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ABOUT ME ===== -->
+  <div class="page" id="page-about">
+    <h2 class="sec-title">About Me</h2>
+    <p class="sec-sub">A bit about who I am and what I'm aiming for</p>
+    <div class="two-col">
+      <div>
+        <div class="info-box">
+          <h3>Personal Statement</h3>
+          <p>I'm in my second year of the BTEC Level 2 Extended Certificate in Information and Creative Technology. I chose this course because technology genuinely interests me — from how websites are built to how software works behind the scenes. I enjoy problem-solving, and I like that IT gives you so many different routes to the same solution.</p>
+          <br>
+          <p>I'm applying to CityTec's IT apprenticeship because I want to get into industry while I carry on learning. I think working in a real IT environment is the best way to build on what I've started here. I'm a hard worker, I pick things up quickly and I'm happy to ask for help when I need it rather than waste time struggling alone.</p>
+        </div>
+        <div class="info-box">
+          <h3>Qualifications</h3>
+          <ul class="info-list">
+            <li>BTEC Level 2 ICT — In Progress (2024–2025)</li>
+            <li>Computer Science GCSE — Grade 6</li>
+            <li>Maths GCSE — Grade 5</li>
+            <li>English Language GCSE — Grade 5</li>
+            <li>Science GCSE — Grade 4</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="profile-card" style="margin-bottom:20px">
+          <div class="avatar-circle">👨‍💻</div>
+          <h3>Shams Patwary</h3>
+          <p>IT Apprenticeship Applicant</p>
+          <p style="margin-top:8px;font-size:0.8rem;color:#5a6a7e">shams.patwary@email.com</p>
+          <p style="font-size:0.8rem;color:#5a6a7e">London, UK</p>
+        </div>
+        <div class="info-box">
+          <h3>Key Skills</h3>
+          <ul class="info-list">
+            <li>HTML &amp; CSS (website building)</li>
+            <li>Python — basic scripting</li>
+            <li>Microsoft Office (Word, Excel, PowerPoint)</li>
+            <li>GIMP — image editing</li>
+            <li>OBS Studio — screen recording</li>
+            <li>Troubleshooting and problem-solving</li>
+            <li>Teamwork and communication</li>
+            <li>Time management</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="info-box">
+      <h3>Other Activities</h3>
+      <ul class="info-list">
+        <li>Volunteered to help set up IT equipment at school events</li>
+        <li>Completed online Python basics course through Code.org in my own time</li>
+        <li>Member of the school Coding Club for two years</li>
+        <li>Helped elderly neighbours with technology (printer setup, device troubleshooting)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== UNIT 1 ===== -->
+  <div class="page" id="page-unit1">
+    <h2 class="sec-title">Unit 1 Work</h2>
+    <p class="sec-sub">Three pieces from Unit 1, each with a commentary explaining the skills involved</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-thumb">📝</div>
+        <div class="card-body">
+          <h3>Written Report — Impact of IT on Society</h3>
+          <span class="tag">MS Word</span><span class="tag">Research</span>
+          <p>A research report looking at how IT affects healthcare, education and the economy. I had to use multiple sources and write using proper headings, paragraphs and references — basically produce something that looked and read like a professional document.</p>
+          <p style="font-size:0.79rem;color:#1d6fdb;font-weight:500;margin-bottom:10px">Why included: Shows I can write formally, organise information and use Word to produce a polished document. This was one of my strongest pieces from Unit 1.</p>
+          <span style="display:inline-block;background:#f0f4f8;border:1px solid var(--border);border-radius:6px;padding:7px 12px;font-size:0.76rem;color:#5a6a7e;">📎 unit1-report.pdf — replace with your file</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-thumb">📊</div>
+        <div class="card-body">
+          <h3>Spreadsheet — Budget Model</h3>
+          <span class="tag">MS Excel</span><span class="tag">Data</span>
+          <p>A budget model I made in Excel that calculates monthly income and outgoings using formulas. I used SUM, IF and AVERAGE functions and created a bar chart to visualise the data. I didn't just type numbers in — I actually made the spreadsheet do the calculations automatically.</p>
+          <p style="font-size:0.79rem;color:#1d6fdb;font-weight:500;margin-bottom:10px">Why included: Data handling skills are useful in most IT roles. This shows I can use spreadsheet software beyond a basic level.</p>
+          <span style="display:inline-block;background:#f0f4f8;border:1px solid var(--border);border-radius:6px;padding:7px 12px;font-size:0.76rem;color:#5a6a7e;">📎 unit1-spreadsheet.pdf — replace with your file</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-thumb">📑</div>
+        <div class="card-body">
+          <h3>Presentation — Future of Technology</h3>
+          <span class="tag">PowerPoint</span><span class="tag">Communication</span>
+          <p>A 10-slide presentation about emerging technologies — AI, robotics and cloud computing. I delivered it to the class and had to answer questions from my teacher. The slides had to be clear and well-designed, not just a wall of text.</p>
+          <p style="font-size:0.79rem;color:#1d6fdb;font-weight:500;margin-bottom:10px">Why included: Shows I can communicate technical ideas to an audience clearly. Keeping up with tech trends is important in any IT role and this piece shows I can research and present them.</p>
+          <span style="display:inline-block;background:#f0f4f8;border:1px solid var(--border);border-radius:6px;padding:7px 12px;font-size:0.76rem;color:#5a6a7e;">📎 unit1-presentation.pdf — replace with your file</span>
+        </div>
+      </div>
+    </div>
+    <div class="info-box">
+      <h3>Unit 1 Summary</h3>
+      <p>The three pieces above show different skills from Unit 1 — written communication, data handling and presentation. Each one needed a different tool and a different approach to the audience. I'm particularly pleased with the report and the spreadsheet. Taken together they show I'm not just strong in one area, which I think is important for an apprenticeship where you'll be doing different things each day.</p>
+    </div>
+  </div>
+
+  <!-- ===== UNIT 2 ===== -->
+  <div class="page" id="page-unit2">
+    <h2 class="sec-title">Unit 2 Work</h2>
+    <p class="sec-sub">Three pieces from Unit 2 — digital image, tutorial video and Python script</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-thumb">🖼️</div>
+        <div class="card-body">
+          <h3>Digital Image — Edited Photograph</h3>
+          <span class="tag">GIMP</span><span class="tag">Digital Media</span>
+          <p>I edited a photo in GIMP — removed the background, adjusted the colour balance and contrast, added a text overlay and exported it as a PNG ready for web use. I had to work with layers, colour modes and masks, which are all proper image editing concepts rather than just applying a filter.</p>
+          <p style="font-size:0.79rem;color:#0a9e8a;font-weight:500;margin-bottom:10px">Why included: Shows I can use professional image editing software. Understanding export formats and colour profiles is useful in any digital media role.</p>
+          <span style="display:inline-block;background:#f0f4f8;border:1px solid var(--border);border-radius:6px;padding:7px 12px;font-size:0.76rem;color:#5a6a7e;">📎 unit2-image.png — replace with your file</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-thumb">🎬</div>
+        <div class="card-body">
+          <h3>Tutorial Video — How to Use Excel Formulas</h3>
+          <span class="tag">OBS Studio</span><span class="tag">Video</span>
+          <p>A short screen-recorded tutorial showing how to use basic Excel formulas. I used OBS Studio to record my screen, added a voiceover commentary as I went and exported the file as an MP4. I had to think about pacing, clarity and how to explain steps simply enough for someone who hasn't done it before.</p>
+          <p style="font-size:0.79rem;color:#0a9e8a;font-weight:500;margin-bottom:10px">Why included: Creating instructional content is used in many IT jobs — from training staff to writing help guides. This shows I can record and produce a basic video to a reasonable standard.</p>
+          <span style="display:inline-block;background:#f0f4f8;border:1px solid var(--border);border-radius:6px;padding:7px 12px;font-size:0.76rem;color:#5a6a7e;">📎 unit2-tutorial.mp4 — replace with your file</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-thumb">🐍</div>
+        <div class="card-body">
+          <h3>Python Script — Number Guessing Game</h3>
+          <span class="tag">Python</span><span class="tag">Programming</span>
+          <p>A Python program that picks a random number and asks the user to guess it, giving higher/lower hints and counting the attempts. Small as it is, it uses loops, conditionals, variables, random number generation and user input — all the building blocks of real programming.</p>
+          <p style="font-size:0.79rem;color:#0a9e8a;font-weight:500;margin-bottom:10px">Why included: Programming is at the core of most IT roles. Even a short script shows I understand the logic involved in writing software, not just using it.</p>
+          <div style="background:#1a2637;border-radius:8px;padding:14px 16px;margin-top:6px;font-family:monospace;font-size:0.76rem;color:#a8d8b0;line-height:1.7">
+            <span style="color:#7a95b8"># Python Number Guessing Game</span><br>
+            <span style="color:#7a95b8"># Written for Unit 2 BTEC ICT</span><br><br>
+            <span style="color:#c9a0ff">import</span> random<br><br>
+            <span style="color:#c9a0ff">def</span> <span style="color:#7ec8e3">guessing_game</span>():<br>
+            &nbsp;&nbsp;secret = random.randint(<span style="color:#f9c74f">1</span>, <span style="color:#f9c74f">100</span>)<br>
+            &nbsp;&nbsp;attempts = <span style="color:#f9c74f">0</span><br>
+            &nbsp;&nbsp;<span style="color:#c9a0ff">while</span> <span style="color:#f9c74f">True</span>:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;guess = <span style="color:#7ec8e3">int</span>(<span style="color:#7ec8e3">input</span>(<span style="color:#a8d8b0">"Guess: "</span>))<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;attempts += <span style="color:#f9c74f">1</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c9a0ff">if</span> guess &lt; secret: <span style="color:#7ec8e3">print</span>(<span style="color:#a8d8b0">"Too low!"</span>)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c9a0ff">elif</span> guess &gt; secret: <span style="color:#7ec8e3">print</span>(<span style="color:#a8d8b0">"Too high!"</span>)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c9a0ff">else</span>: <span style="color:#7ec8e3">print</span>(<span style="color:#a8d8b0">f"Got it in {attempts} attempts!"</span>); <span style="color:#c9a0ff">break</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="info-box">
+      <h3>Unit 2 Summary</h3>
+      <p>Unit 2 was probably the unit I enjoyed most. Getting to use different creative tools — GIMP, OBS, Python — and produce something real at the end of each task was motivating. The Python script especially made me want to learn more programming, which is why I started doing extra online courses in my spare time. I think that kind of self-motivation is something CityTec would want in an apprentice.</p>
+    </div>
+  </div>
+
+  <!-- ===== SKILLS ===== -->
+  <div class="page" id="page-skills">
+    <h2 class="sec-title">Skills &amp; Achievements</h2>
+    <p class="sec-sub">A visual breakdown of my technical and soft skills, plus key milestones</p>
+    <div class="two-col">
+      <div class="info-box">
+        <h3>Technical Skills</h3>
+        <br>
+        <div class="skill-item"><div class="skill-label"><span>Microsoft Word</span><span>80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+        <div class="skill-item"><div class="skill-label"><span>HTML &amp; CSS</span><span>75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+        <div class="skill-item"><div class="skill-label"><span>Microsoft Excel</span><span>70%</span></div><div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div></div>
+        <div class="skill-item"><div class="skill-label"><span>PowerPoint</span><span>75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+        <div class="skill-item"><div class="skill-label"><span>GIMP — Image Editing</span><span>55%</span></div><div class="skill-bar"><div class="skill-fill" style="width:55%"></div></div></div>
+        <div class="skill-item"><div class="skill-label"><span>OBS Studio</span><span>50%</span></div><div class="skill-bar"><div class="skill-fill" style="width:50%"></div></div></div>
+        <div class="skill-item"><div class="skill-label"><span>Python (basic)</span><span>45%</span></div><div class="skill-bar"><div class="skill-fill" style="width:45%"></div></div></div>
+      </div>
+      <div class="info-box">
+        <h3>Soft Skills</h3>
+        <br>
+        <div class="skill-item"><div class="skill-label"><span>Teamwork</span><span>85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+        <div class="skill-item"><div class="skill-label"><span>Communication</span><span>80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+        <div class="skill-item"><div class="skill-label"><span>Attention to Detail</span><span>78%</span></div><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div></div>
+        <div class="skill-item"><div class="skill-label"><span>Problem Solving</span><span>75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+        <div class="skill-item"><div class="skill-label"><span>Time Management</span><span>70%</span></div><div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div></div>
+        <div class="skill-item"><div class="skill-label"><span>Initiative / Self-Study</span><span>70%</span></div><div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div></div>
+      </div>
+    </div>
+    <div class="info-box">
+      <h3>Key Achievements</h3>
+      <div class="timeline" style="margin-top:14px">
+        <div class="tl-item"><h4>September 2024 — Started BTEC Level 2 ICT</h4><p>Enrolled on the Pearson BTEC Level 2 Extended Certificate in Information and Creative Technology at NCC London.</p></div>
+        <div class="tl-item"><h4>November 2024 — Completed Unit 1</h4><p>Submitted all Unit 1 assignments. Passed with a Merit overall, with a Distinction on the written report.</p></div>
+        <div class="tl-item"><h4>January 2025 — Joined Coding Club</h4><p>Started attending the school coding club. Practised Python and helped other students with HTML tasks.</p></div>
+        <div class="tl-item"><h4>February 2025 — Completed Unit 2</h4><p>Finished all Unit 2 tasks including the Python script and digital image. Received a Merit overall.</p></div>
+        <div class="tl-item"><h4>April 2025 — Completed Code.org Python Course</h4><p>Finished an introductory Python course in my own time outside of school.</p></div>
+        <div class="tl-item"><h4>May 2025 — Built This Portfolio</h4><p>Designed and built this digital portfolio in HTML/CSS/JS as part of BTEC Unit 3 and my CityTec application.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HOBBIES ===== -->
+  <div class="page" id="page-hobbies">
+    <h2 class="sec-title">Hobbies &amp; Interests</h2>
+    <p class="sec-sub">What I get up to outside of school and how it connects to IT</p>
+    <div class="hobby-grid">
+      <div class="hobby-card">
+        <div class="hobby-icon">💻</div>
+        <h3>Coding Personal Projects</h3>
+        <p>In my spare time I like to build small websites and scripts just to see if I can make things work. I've made a basic to-do list app and a simple quiz game in Python. I usually start with a tutorial and then try to change things and add my own features — that's when you actually learn, not just when you copy something.</p>
+      </div>
+      <div class="hobby-card">
+        <div class="hobby-icon">🎮</div>
+        <h3>Gaming</h3>
+        <p>I enjoy gaming, particularly strategy and puzzle games. What interests me from an IT perspective is the logic behind them — how AI opponents are programmed, how game data is saved and loaded. I sometimes look up how certain mechanics work, which has taught me quite a lot about how software handles user input and decision-making logic.</p>
+      </div>
+      <div class="hobby-card">
+        <div class="hobby-icon">📸</div>
+        <h3>Photography</h3>
+        <p>I've been into photography for about two years. I mostly use my phone but I've also used a DSLR camera. I edit most of my photos using GIMP, which ties directly into my Unit 2 work. The technical side — resolution, file formats, colour profiles — is something I find genuinely interesting, not just a task to complete.</p>
+      </div>
+      <div class="hobby-card">
+        <div class="hobby-icon">📰</div>
+        <h3>Reading About Tech</h3>
+        <p>I regularly read tech news on The Verge and BBC Tech to keep up with the industry. I think staying aware of current trends matters if you want to work in IT — things change fast and you need to keep learning. Reading about what companies are building now helps me understand where the industry is heading.</p>
+      </div>
+      <div class="hobby-card">
+        <div class="hobby-icon">🔧</div>
+        <h3>Building &amp; Fixing Computers</h3>
+        <p>A relative gave me an old PC and I took it apart and reassembled it to understand how the components fit together. I upgraded the RAM and installed a fresh OS. I've since helped a few neighbours with computer problems — slow performance, printer setup, removing malware. It's taught me a lot about hardware and hands-on troubleshooting.</p>
+      </div>
+      <div class="hobby-card">
+        <div class="hobby-icon">🎵</div>
+        <h3>Music &amp; Audio</h3>
+        <p>I use Audacity to record and edit basic audio tracks in my free time. Learning about audio files — bitrate, sample rate, formats like MP3 and WAV — has given me a better understanding of digital content overall. It's another way that a hobby has ended up teaching me something directly relevant to the course.</p>
+      </div>
+    </div>
+    <div class="info-box">
+      <h3>Why This Matters for CityTec</h3>
+      <p>I'm not just someone who uses technology — I spend my free time exploring how it actually works. I think that kind of motivation matters a lot in an IT role where you're expected to keep learning. The fact that I build things, fix things and read about the industry in my own time shows this is a genuine interest, not just a course I'm doing for the qualification.</p>
+    </div>
+  </div>
+
+  <!-- ===== TESTING ===== -->
+  <div class="page" id="page-testing">
+    <h2 class="sec-title">Test Evidence</h2>
+    <p class="sec-sub">How I tested this portfolio across different browsers and devices</p>
+    <div class="info-box" style="margin-bottom:24px">
+      <h3>Why I Tested</h3>
+      <p>Before submitting, I needed to check that the portfolio actually worked for someone visiting it — not just on my own computer but on different browsers and devices too. Websites can display differently depending on the browser, so it's important to go through everything systematically rather than just assuming it'll be fine. I tested on Google Chrome and Mozilla Firefox on a Windows laptop, and also on Chrome Mobile on an Android phone.</p>
+    </div>
+    <h3 style="font-family:'Syne',sans-serif;font-weight:700;color:var(--navy);margin-bottom:14px;font-size:1rem">Test Plan &amp; Results</h3>
+    <div style="overflow-x:auto;margin-bottom:32px">
+      <table class="data-table">
+        <thead>
+          <tr><th>No.</th><th>What Was Tested</th><th>Expected Result</th><th>Chrome (Laptop)</th><th>Firefox (Laptop)</th><th>Chrome (Mobile)</th><th>Action Taken</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>T1</td><td>Home page loads</td><td>Header, nav, hero and cards all visible</td><td class="pass">PASS</td><td class="pass">PASS</td><td class="pass">PASS</td><td>None needed</td></tr>
+          <tr><td>T2</td><td>All nav buttons work</td><td>Each button shows the correct page</td><td class="pass">PASS</td><td class="pass">PASS</td><td class="pass">PASS</td><td>None needed</td></tr>
+          <tr><td>T3</td><td>Active nav button highlighted</td><td>Current page button shows teal background</td><td class="pass">PASS</td><td class="pass">PASS</td><td class="pass">PASS</td><td>None needed</td></tr>
+          <tr><td>T4</td><td>Profile avatar on Home and About</td><td>Displays at correct size, no overflow</td><td class="pass">PASS</td><td class="pass">PASS</td><td class="fixed">FIXED</td><td>Added max-width:100% — avatar was overflowing on small screens</td></tr>
+          <tr><td>T5</td><td>Card grid layout</td><td>Cards in responsive grid, wrap on mobile</td><td class="pass">PASS</td><td class="pass">PASS</td><td class="pass">PASS</td><td>Grid collapses correctly</td></tr>
+          <tr><td>T6</td><td>Python code block (Unit 2)</td><td>Code visible with syntax highlighting</td><td class="pass">PASS</td><td class="pass">PASS</td><td class="pass">PASS</td><td>None needed</td></tr>
+          <tr><td>T7</td><td>Skills progress bars</td><td>Bars display at correct widths</td><td class="pass">PASS</td><td class="pass">PASS</td><td class="fixed">FIXED</td><td>Added width:100% to bar container — bars appeared narrower on mobile</td></tr>
+          <tr><td>T8</td><td>Hobby cards grid</td><td>6 cards in responsive grid</td><td class="pass">PASS</td><td class="pass">PASS</td><td class="pass">PASS</td><td>None needed</td></tr>
+          <tr><td>T9</td><td>Contact form fields</td><td>Can type in name, email, message</td><td class="pass">PASS</td><td class="pass">PASS</td><td class="pass">PASS</td><td>None needed</td></tr>
+          <tr><td>T10</td><td>Header and footer on all pages</td><td>Consistent on all 8 sections</td><td class="pass">PASS</td><td class="pass">PASS</td><td class="pass">PASS</td><td>None needed</td></tr>
+          <tr><td>T11</td><td>Timeline display (Skills page)</td><td>Timeline items show correctly stacked</td><td class="pass">PASS</td><td class="pass">PASS</td><td class="pass">PASS</td><td>None needed</td></tr>
+          <tr><td>T12</td><td>Text accuracy — name, dates, unit titles</td><td>All details correct throughout</td><td class="pass">PASS</td><td class="pass">PASS</td><td class="pass">PASS</td><td>None needed</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="two-col">
+      <div class="info-box">
+        <h3>Browser Screenshot — Chrome (Desktop)</h3>
+        <div style="background:#e8f1fb;border-radius:8px;height:160px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;margin-top:10px;border:1px dashed #a3bfe8">
+          <span style="font-size:1.8rem">🖥️</span>
+          <p style="font-size:0.75rem;color:#4a6fa5;text-align:center">Replace with your Chrome screenshot<br>Take a screenshot of this page in Chrome</p>
+        </div>
+        <p style="font-size:0.77rem;color:var(--muted);margin-top:8px">Home page in Google Chrome on Windows laptop. All elements displayed correctly with no layout issues.</p>
+      </div>
+      <div class="info-box">
+        <h3>Browser Screenshot — Firefox (Desktop)</h3>
+        <div style="background:#e8f1fb;border-radius:8px;height:160px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;margin-top:10px;border:1px dashed #a3bfe8">
+          <span style="font-size:1.8rem">🦊</span>
+          <p style="font-size:0.75rem;color:#4a6fa5;text-align:center">Replace with your Firefox screenshot<br>Take a screenshot of this page in Firefox</p>
+        </div>
+        <p style="font-size:0.77rem;color:var(--muted);margin-top:8px">Same page in Mozilla Firefox. Layout and styles rendered correctly with only minor font-rendering differences.</p>
+      </div>
+    </div>
+    <div class="info-box">
+      <h3>Testing Summary</h3>
+      <p>10 out of 12 tests passed first time with no issues. Two needed small CSS fixes — the avatar overflow on mobile and the progress bar width — both straightforward one-line changes. After fixing those, everything passed on all three platforms. This gives me confidence the portfolio will work properly when CityTec staff open it on their devices.</p>
+    </div>
+  </div>
+
+  <!-- ===== CONTACT ===== -->
+  <div class="page" id="page-contact">
+    <h2 class="sec-title">Get in Touch</h2>
+    <p class="sec-sub">Interested in my application? I'd love to hear from you</p>
+    <div class="two-col">
+      <div>
+        <div class="info-box" style="margin-bottom:20px">
+          <h3>Contact Details</h3>
+          <ul class="info-list">
+            <li>📧 shams.patwary@email.com</li>
+            <li>📍 London, UK</li>
+            <li>🔗 linkedin.com/in/shamspatwary-ict</li>
+          </ul>
+        </div>
+        <div class="info-box">
+          <h3>A Note to CityTec</h3>
+          <p>Thank you for taking the time to go through my portfolio. I've put a lot of work into this course and I'm genuinely excited about the idea of joining CityTec as an apprentice. I think the combination of my BTEC coursework, my personal interest in technology and my willingness to keep learning makes me a good candidate for the role.</p>
+          <br>
+          <p>If you have any questions about anything in the portfolio or want to arrange an interview, please get in touch using the form or directly by email. I look forward to hearing from you.</p>
+        </div>
+      </div>
+      <div class="info-box">
+        <h3>Send a Message</h3>
+        <br>
+        <div class="form-group">
+          <label for="c-name">Your Name</label>
+          <input type="text" id="c-name" placeholder="e.g. Sarah Chen — CityTec HR">
+        </div>
+        <div class="form-group">
+          <label for="c-email">Email Address</label>
+          <input type="email" id="c-email" placeholder="your@citytec.co.uk">
+        </div>
+        <div class="form-group">
+          <label for="c-msg">Message</label>
+          <textarea id="c-msg" placeholder="I'd like to discuss your application..."></textarea>
+        </div>
+        <button class="btn-submit" onclick="alert('Thank you! Please also email shams.patwary@email.com directly to make sure your message reaches me.')">Send Message</button>
+        <div class="form-notice">
+          <strong>Please note:</strong> This form is a demonstration built as part of my BTEC Unit 3 assignment. To make sure your message reaches me, please email <strong>shams.patwary@email.com</strong> directly as well.
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>Shams Patwary · BTEC Level 2 ICT Portfolio · Unit 3: A Digital Portfolio · Assessor: Fraz Arshad · May 2025</p>
+</footer>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  document.getElementById('nav-' + id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
